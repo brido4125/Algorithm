@@ -13,17 +13,16 @@ public class PrimeNumber {
             if (checkAry[i] == 0) {
                 answer++;
                 primeList.add(i);
-            }
-            for (int j = i; j < checkAry.length; j++) {
-                if (j % i == 0) {
-                    checkAry[j] = 1;
+                for (int j = i; j < checkAry.length; j++) {
+                    if (j % i == 0) {
+                        checkAry[j] = 1;
+                    }
                 }
             }
         }
         System.out.println("primeList = " + primeList);
         return answer;
     }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int i = sc.nextInt();
