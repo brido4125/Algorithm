@@ -6,9 +6,8 @@ public class SerialSum {
     private static int solution(int length, int num, int[] ary) {
         int anwser = 0;
         int leftPointer = 0;
-        int rightPointer = 0;
         int sum = 0;
-        for (rightPointer = 0; rightPointer < length; rightPointer++) {
+        for (int rightPointer = 0; rightPointer < length; rightPointer++) {
             sum += ary[rightPointer];
             if (sum == num) {
                 anwser++;
