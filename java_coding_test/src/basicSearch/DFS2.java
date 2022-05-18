@@ -10,7 +10,6 @@ public class DFS2 {
     static int[] ch;
     static int n;
     private static void dfs(int l) {
-
         if (l == n + 1) {
             String tmp = "";
             for (int i = 1; i < ch.length; i++) {
