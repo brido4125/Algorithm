@@ -7,7 +7,6 @@ public class PortionSet {
     static int n, total = 0;
     static boolean flag = false;
 
-
     private static void DFS(int L, int sum, int[] ary) {
         if (flag) {
             return;
