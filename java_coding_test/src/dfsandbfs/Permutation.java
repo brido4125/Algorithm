@@ -1,32 +1,45 @@
 package dfsandbfs;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Permutation {
-    static int N,M;
+    static int N;
+    static int M;
     static int[] permutation;
-
+    static int[] check;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         N = sc.nextInt();
         M = sc.nextInt();
-        permutation = new int[M];//M개 만큼 숫자를 뽑아서 배열에 저장 후 출력
-        dfs(0);
+        int[] ary = new int[N];
+        for (int i = 0; i < ary.length; i++) {
+            ary[i] = sc.nextInt();
+        }
+        solution(ary);
     }
 
-    private static void dfs(int L) {
-        if (L == M) {
-            for (int x : permutation) {
-                System.out.print(x + " ");
+    private static void solution(int[] ary) {
+        permutation = new int[M];
+        check = new int[N];
+        dfs(0,ary);
+    }
+
+    private static void dfs(int L, int[] ary) {
+        if (M == L) {
+            for (int j : permutation) {
+                System.out.print(j + " ");
             }
             System.out.println();
         } else {
-            //1부터 N까지 수를 선택
-            for (int i = 1; i <= N; i++) {
-                permutation[L] = i; // 첫번째로 뽑은 수를 index 0에 위치 ex) i가 1이면 제일 처음으로 1뽑음
-                dfs(L + 1);//무조건 그 다음 Level로
+            for (int i = 0; i < N; i++) {
+                if (check[i] == 0) {
+                    permutation[L] = ary[i];
+                    check[i] = 1;
+                    dfs(L + 1, ary);
+                    check[i] = 0;
+                }
             }
         }
+
     }
 }
