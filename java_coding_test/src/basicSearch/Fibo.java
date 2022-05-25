@@ -15,7 +15,6 @@ public class Fibo {
 
 
     private static int solution(int num) {
-
         if (fibo[num] > 0) {
             return fibo[num];
         }
