@@ -5,27 +5,39 @@ import java.util.List;
 import java.util.Scanner;
 
 public class PrimeNumber {
-    private static int solution(int num) {
-        int[] checkAry = new int[num + 1];
-        List<Integer> primeList = new ArrayList<Integer>();
+    private static int timeLimitSolution(int num) {
         int answer = 0;
-        for (int i = 2; i < checkAry.length; i++) {
-            if (checkAry[i] == 0) {
+        for (int i = 2; i <= num; i++) {
+            int count = 0;
+            for (int j = 1; j < i; j++) {
+                if (i % j == 0) {
+                    count++;
+                }
+            }
+            if (count == 1) {
                 answer++;
-                primeList.add(i);
-                for (int j = i; j < checkAry.length; j++) {
-                    if (j % i == 0) {
-                        checkAry[j] = 1;
-                    }
+            }
+        }
+        return answer;
+    }
+    private static int solution(int num) {
+        int answer = 0;
+        int[] ary = new int[num + 1];
+        for (int i = 2; i < ary.length; i++) {
+            if (ary[i] == 0) {
+                answer++;
+                for (int j = i; j <= num; j=j+i) {//j는 i만큼 증가 필요
+                    ary[j] = 1;
                 }
             }
         }
-        System.out.println("primeList = " + primeList);
         return answer;
     }
-    public static void main(String[] args) {
+
+
+        public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int i = sc.nextInt();
-        System.out.println("solution(i) = " + solution(i));
+        System.out.println(solution(i));
     }
 }
