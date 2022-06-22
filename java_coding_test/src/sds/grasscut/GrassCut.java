@@ -1,4 +1,4 @@
-package sds;
+package sds.grasscut;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,7 +11,6 @@ public class GrassCut {
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
         int testCase = sc.nextInt();
-        long[] answers = new long[testCase];
         PriorityQueue<Integer> queue = new PriorityQueue<>(Collections.reverseOrder());
         for (int i = 1; i <= testCase; i++) {
             int N = sc.nextInt();
@@ -30,13 +29,10 @@ public class GrassCut {
             for (int j = 0; j < oil.length; j++) {
                 oil[j] = sc.nextInt();
             }
-            for (int j = 0; j < answers.length; j++) {
-                answers[j] = solution(N, M, days, board, oil, queue);
-            }
+            long answer = solution(N, M, days, board, oil, queue);
+            System.out.println("#" + i + " " + answer);
             queue.clear();
         }
-        sc.close();
-        System.out.println(Arrays.toString(answers));
     }
 
     private static long solution(int N,int M, int days,int[][] board,int[] oil,PriorityQueue<Integer> queue) {
