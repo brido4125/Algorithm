@@ -7,11 +7,9 @@ public class DFS {
         if (root == null) {
             return;
         } else {
-            //System.out.print(root.data+ " "); // 전위 순회 : 루트을 먼저 방문
             DFS(root.lt);
-            System.out.print(root.data+ " "); // 중위 순회 : 루트를 중간에 방문
+            System.out.println(root.data);// 중위 순회
             DFS(root.rt);
-            //System.out.print(root.data+ " "); // 후위 순회 : 루트를 마지막에 방문
         }
     }
 
