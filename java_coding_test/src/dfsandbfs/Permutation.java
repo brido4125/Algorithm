@@ -9,8 +9,8 @@ public class Permutation {
     static int[] check;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        N = sc.nextInt();
-        M = sc.nextInt();
+        N = sc.nextInt(); // 총 개수
+        M = sc.nextInt(); // 뽑을 개수
         int[] ary = new int[N];
         for (int i = 0; i < ary.length; i++) {
             ary[i] = sc.nextInt();
