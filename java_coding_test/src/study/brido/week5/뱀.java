@@ -1,9 +1,12 @@
 package study.brido.week5;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class 뱀 {
@@ -36,12 +39,13 @@ public class 뱀 {
         int x = 0;
         int y = 0;
         board[y][x] = 2; // 뱀이 처음 시작할때 있는 위치
-        Deque<int[]> queue = new ArrayDeque<>();
+        Queue<int[]> queue = new LinkedList<>();
         queue.offer(new int[]{y, x});
 
         while (true) {
             y += dy[direction];
             x += dx[direction];
+
             if (0 <= y && y < N && 0 <= x && x < N && board[y][x] != 2) {
                 if (board[y][x] != 1) { // 사과가 없는 곳
                     int[] tail = queue.poll();
@@ -52,7 +56,7 @@ public class 뱀 {
                 if (times.containsKey(time)) {
                     direction = directionChange(direction, times.get(time));
                 }
-                time++;
+                time += 1;
             } else { // 뱀이 벽이나 자기 자신에 부딪혀서 게임이 끝나는 경우
                 break;
             }
@@ -61,9 +65,9 @@ public class 뱀 {
         System.out.println(time);
     }
 
-    public static int directionChange(int d, char c) {
+    private static int directionChange(int d, char c) {
         if (c == 'L') {
-            d = (d - 1) % 4;
+            d = (d - 1 + 4) % 4;
         } else {
             d = (d + 1) % 4;
         }
