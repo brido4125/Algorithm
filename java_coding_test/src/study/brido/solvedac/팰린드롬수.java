@@ -1,4 +1,4 @@
-package study.brido;
+package study.brido.solvedac;
 
 import java.util.Scanner;
 import java.util.Stack;

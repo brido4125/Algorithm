@@ -1,10 +1,7 @@
-package study.brido;
+package study.brido.solvedac;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class 단어정렬 {
