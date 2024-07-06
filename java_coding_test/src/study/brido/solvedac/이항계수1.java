@@ -1,7 +1,16 @@
-## Combination(조합)
-- nCk 값을 구하는 경우 사용
-```java
- public static void main(String[] args) throws IOException {
+package study.brido.solvedac;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class 이항계수1 {
+    static int count = 0;
+    static int N;
+    static int K;
+
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
@@ -30,4 +39,4 @@
             }
         }
     }
-```
+}
