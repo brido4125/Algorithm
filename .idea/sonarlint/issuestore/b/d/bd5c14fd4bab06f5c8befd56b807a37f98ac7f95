@@ -1,0 +1,14 @@
+
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒ³´í8»°Ãù1
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ò—Ü8»°Ãù1
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÑŞŸèÿÿÿÿÿ8»°Ãù1
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ°ş8»°Ãù1
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’Ï´Åøÿÿÿÿ8¼°Ãù1
+n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(´¢òßûÿÿÿÿ8¾°Ãù1
+L	java:S106A"+Replace this use of System.out by a logger.(ûÛÏçùÿÿÿÿ8ÓŸ°Ãù1
+S
+java:S1128"1Remove this unused import 'java.util.ArrayDeque'.(†®ŞÖúÿÿÿÿ8ÖŸ°Ãù1
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8×Ÿ°Ãù1
+N
+java:S1128",Remove this unused import 'java.util.Deque'.(³Ã¯¥şÿÿÿÿ8×Ÿ°Ãù1
