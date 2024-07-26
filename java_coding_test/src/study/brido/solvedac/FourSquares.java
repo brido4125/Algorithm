@@ -17,19 +17,20 @@ public class FourSquares {
 //        System.out.println(Math.pow(224, 2)); -> 50716
 
         int N = Integer.parseInt(st.nextToken());
-        for (int i = 1; i < 224; i++) {
+
+        for (int i = 1; i <= Math.sqrt(N); i++) {
             nums.add((int) Math.pow(i, 2));
         }
-        System.out.println(dp(N));
+
+        for (Integer i : nums) {
+            System.out.println(dp(N, i));
+        }
     }
 
-
-    public static int dp(int N) {
+    public static int dp(int N, int ceil) {
         if (nums.contains(N)) {
             return 1;
         }
-        int ceil = (int) Math.pow(Math.floor(Math.sqrt(N)), 2);
-        System.out.println(ceil);
         return dp(ceil) + dp(N - ceil);
     }
 }
