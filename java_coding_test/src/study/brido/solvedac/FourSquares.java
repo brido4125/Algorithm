@@ -10,6 +10,7 @@ import java.util.StringTokenizer;
 public class FourSquares {
 
     private static Set<Integer> nums = new HashSet<>();
+    static int[] board;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -18,19 +19,20 @@ public class FourSquares {
 
         int N = Integer.parseInt(st.nextToken());
 
+        board = new int[N + 1];
+
         for (int i = 1; i <= Math.sqrt(N); i++) {
             nums.add((int) Math.pow(i, 2));
         }
 
-        for (Integer i : nums) {
-            System.out.println(dp(N, i));
-        }
+        System.out.println(dp(N));
     }
 
-    public static int dp(int N, int ceil) {
+    public static int dp(int N) {
         if (nums.contains(N)) {
-            return 1;
+            board[N] = 1;
         }
+        int ceil = (int) Math.pow(Math.floor(Math.sqrt(N)), 2);
         return dp(ceil) + dp(N - ceil);
     }
 }
