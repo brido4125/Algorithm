@@ -33,6 +33,24 @@
 ```
 
 
+## Permuation(순열)
+## 중복 순열
+```java
+    static void permutation(int L, int[] per, int[] ary) {
+        if (L == 2) {
+
+            return;
+        }
+        for (int i = 0; i < ary.length; i++) {
+            per[L] = ary[i];
+            permutation(L + 1, per, ary);
+        }
+    }
+```
+- nCr에 해당 하는 값들 -> n == ary.length, r == per.length
+- 중복 순열이라 checked 배열과 for 문 i가 0부터 시작
+
+
 ## BFS 시 주의사항
 특정 좌표를 큐에 넣을 때, 해당 좌표의 상태 변화 (ex. 갈 수 있는곳 -> 벽)는
 먼저 기존의 상태를 확인한 다음 변화시키도록 구현해야한다.

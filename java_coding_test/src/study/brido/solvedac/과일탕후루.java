@@ -4,83 +4,53 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Deque;
 import java.util.HashSet;
-import java.util.List;
 import java.util.StringTokenizer;
 
 public class 과일탕후루 {
+
+    static Integer answer = 0;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         int N = Integer.parseInt(st.nextToken());
+        int[] per = new int[2];
 
         Deque<Integer> src = new ArrayDeque<>();
-
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
             src.add(Integer.parseInt(st.nextToken()));
         }
+        permutation(0, per, N, src);
+        System.out.println(answer);
+    }
 
-        List<Integer> answers = new ArrayList<>();
+    // 중복 순열
+    static void permutation(int L, int[] per, int N, Deque<Integer> deque) {
+        if (L == 2) {
+            ArrayDeque<Integer> copy = new ArrayDeque<>(deque);
+            int firstPoll = per[0];
+            int lastPoll = per[1];
 
-        ArrayDeque<Integer> deque = new ArrayDeque<>(src);
-        HashSet<Integer> set = new HashSet<>(deque);
-        while (set.size() > 2) {
-            Integer i = deque.pollFirst();
-            if (!deque.contains(i)) {
-                set.remove(i);
+            for (int i = 0; i < firstPoll; i++) {
+                copy.pollFirst();
             }
-            if (set.size() <= 2) {
-                break;
+
+            for (int i = 0; i < lastPoll; i++) {
+                copy.pollLast();
             }
-            Integer l = deque.pollLast();
-            if (!deque.contains(l)) {
-                set.remove(l);
+
+            if (new HashSet<>(copy).size() <= 2 && copy.size() >= answer ) {
+                answer = copy.size();
             }
+            return;
         }
-        answers.add(deque.size());
-
-        deque = new ArrayDeque<>(src);
-        set = new HashSet<>(deque);
-        while (set.size() > 2) {
-            Integer i = deque.pollFirst();
-            if (!deque.contains(i)) {
-                set.remove(i);
-            }
+        for (int i = 0 ; i < N ; i++) {
+            per[L] = i;
+            permutation(L + 1, per, N, deque);
         }
-        answers.add(deque.size());
-
-        deque = new ArrayDeque<>(src);
-        set = new HashSet<>(deque);
-        while (set.size() > 2) {
-            Integer i = deque.pollLast();
-            if (!deque.contains(i)) {
-                set.remove(i);
-            }
-        }
-        answers.add(deque.size());
-
-        deque = new ArrayDeque<>(src);
-        set = new HashSet<>(deque);
-        while (set.size() > 2) {
-            Integer i = deque.pollLast();
-            if (!deque.contains(i)) {
-                set.remove(i);
-            }
-            if (set.size() <= 2) {
-                break;
-            }
-            Integer l = deque.pollFirst();
-            if (!deque.contains(l)) {
-                set.remove(l);
-            }
-        }
-        answers.add(deque.size());
-
-        System.out.println(Collections.max(answers));
     }
 }
