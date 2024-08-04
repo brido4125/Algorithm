@@ -1,4 +1,5 @@
 ## Combination(조합)
+조합의 시간 복잡도는 O(2^n)
 - nCk 값을 구하는 경우 사용
 ```java
  public static void main(String[] args) throws IOException {
@@ -34,6 +35,7 @@
 
 
 ## Permuation(순열)
+순열의 시간 복잡도는 O(n^2)
 ## 중복 순열
 ```java
     static void permutation(int L, int[] per, int[] ary) {
