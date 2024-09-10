@@ -15,42 +15,33 @@ public class 과일탕후루 {
         int N = Integer.parseInt(st.nextToken());
         int[] ary = new int[N];
         st = new StringTokenizer(br.readLine());
-        Map<Integer, Integer> map = new HashMap<>();
 
         for (int i = 0; i < N; i++) {
             int t = Integer.parseInt(st.nextToken());
             ary[i] = t;
-            Integer v = map.putIfAbsent(t, 1);
-            if (v != null) {
-                map.put(t, v + 1);
-            }
         }
 
-        // 크기가 i인 sliding window
-        for (int i = N; i >= 2; i--) {
-            if (map.size() <= 2) {
-                System.out.println(i);
-                return;
-            }
+        int answer = 0;
 
-            for (int start = 0; start < N - i; start++) {
-                int end  = start + i;
-                Integer startElem = map.get(ary[start]);
-                map.put(ary[start], startElem - 1);
+        int start = 0;
+        int end = 0;
+
+        Map<Integer, Integer> map = new HashMap<>();
+
+        while (end < N) {
+            map.merge(ary[end], 1, Integer::sum);
+
+            while (map.size() > 2) {
+                map.put(ary[start], map.get(ary[start]) - 1);
                 if (map.get(ary[start]) == 0) {
                     map.remove(ary[start]);
                 }
-
-                Integer endElem = map.putIfAbsent(ary[end], 1);
-                if (endElem != null) {
-                    map.put(ary[end], endElem + 1);
-                }
-
-                if (map.size() <= 2) {
-                    System.out.println(i);
-                    return;
-                }
+                start++;
             }
+            answer = Math.max(answer, end - start + 1);
+            end++;
         }
+
+        System.out.println(answer);
     }
 }
