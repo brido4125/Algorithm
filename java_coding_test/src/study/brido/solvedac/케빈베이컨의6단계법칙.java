@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class 케빈베이컨의6단계법칙 {
@@ -39,7 +41,8 @@ public class 케빈베이컨의6단계법칙 {
             checked = new boolean[node + 1];
             cost = new int[node + 1];
             checked[i] = true;
-            dfs(i, adjList, 0);
+//            dfs(i, adjList, 0);
+            bfs(i, adjList);
             int sum = 0 ;
             for (Integer k : cost) {
                 sum += k;
@@ -59,6 +62,31 @@ public class 케빈베이컨의6단계법칙 {
         System.out.println(answer);
     }
 
+    private static void bfs(int start, List<List<Integer>> list) {
+        Queue<int[]> queue = new LinkedList<>();
+        queue.add(new int[]{start, 0});
+        checked[start] = true;
+
+        while (!queue.isEmpty()) {
+            int[] poll = queue.poll();
+            cost[poll[0]] = poll[1];
+//            if (cost[poll[0]] == 0) {
+//            } else {
+//                cost[poll[0]] = Math.min(cost[poll[0]], poll[1]);
+//            }
+            List<Integer> integers = list.get(poll[0]);
+            for (Integer i : integers) {
+                if (!checked[i]) {
+                    checked[i] = true;
+                    queue.add(new int[]{i, poll[1] + 1});
+                }
+            }
+        }
+    }
+
+    /*
+    * bfs는 통과 dfs는 시간 초과 -> 테이트 케이스에서 편향 트리가 있으면 dfs는 시간 초과 발생확률 증가
+    * */
     private static void dfs(int start, List<List<Integer>> list, int depth) {
         if (cost[start] == 0) {
             cost[start] = depth;
