@@ -19,3 +19,7 @@ b
 2java_coding_test/src/study/brido/solvedac/큐.java,5/6/56bf13964dfb94de704e5144f9d7c55fbd4aff20
 ~
 Njava_coding_test/src/study/brido/solvedac/케빈베이컨의6단계법칙.java,4/d/4d5f4914b8bbf0cacdd28cdf08c5dc13fa279a15
+e
+5java_coding_test/src/study/brido/solvedac/주몽.java,5/a/5a99025ccbe59de7e0c565b7e2bdbaca6c559757
+X
+(java_coding_test/src/etc/boj/주몽.java,7/6/76a7a39e64b939f8c7d62971bd7e72bfd983570a
